@@ -13,6 +13,7 @@ class Batman
 		puts("+--------------Batman's Stats-----------+")
 		puts("+--------------Health:#{@health} points---------+")
 		puts("+--------------Position:#{@position}---------------+")
+    puts("+--------------Alfred Calls:#{@alfred_calls}---------------+")
 	end
 	def load_stage
 		for i in 1..9 do
