@@ -4,7 +4,7 @@ class Batman
 		@name =  "Batman"
 		@health = 30
     @alfred_calls = 3
-    @stage = [0,0,1]
+    @stage = []
 		@position=0
 	end
   def call_alfred
@@ -20,12 +20,10 @@ class Batman
     self.health -= noob_damage
     puts "pow\nla vida se redujo #{noob_damage} unidades"
   end
-
 	def show_stats
 		puts("+--------------Batman's Stats-----------+")
 		puts("+--------------Health:#{@health} points---------+")
 		puts("+--------------Position:#{@position}---------------+")
-
 	end
 
 	def walk 
