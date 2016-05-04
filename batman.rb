@@ -12,7 +12,6 @@ class Batman
 		puts("+--------------Batman's Stats-----------+")
 		puts("+--------------Health:#{@health} points---------+")
 		puts("+--------------Position:#{@position}---------------+")
-
 	end
 
 	def walk 
@@ -33,7 +32,7 @@ class Batman
     if alfred_calls >= 1
       health_package =  rand(3..8)
       self.health += health_package
-      puts "alfred aumento #{health_package} unidades en HEALTH"
+      puts "Alfred increased your Health in #{health_package} points"
     end
     self.alfred_calls -=1
   end
