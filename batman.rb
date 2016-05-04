@@ -4,7 +4,7 @@ class Batman
 		@name =  "Batman"
 		@health = 30
     @alfred_calls = 3
-		@stage = []
+    @stage = [0,0,1]
 		@position=0
 	end
   def call_alfred
@@ -15,7 +15,7 @@ class Batman
     end
     self.alfred_calls -=1
   end
-  def figth_noob
+  def fight_noob
     noob_damage = rand(2..7)
     self.health -= noob_damage
     puts "pow\nla vida se redujo #{noob_damage} unidades"
@@ -30,12 +30,12 @@ class Batman
 
 	def walk 
 		@position += 1
-		if position < 10
-			case @stage[position]
+		if@position < 10
+			case @stage[@position]
 			when 0
 				"Empty stage. You have run with luck this time Batman"
 			when 1
-				fight_noob
+        fight_noob
 			end
 		else
 			fight_boss
