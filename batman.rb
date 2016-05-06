@@ -4,28 +4,16 @@ class Batman
 		@name =  "Batman"
 		@health = 30
 		@stage = [0]
+		self.load_stage
    		@alfred_calls = 3
 		@position=0
 	end
-  def call_alfred
-    if alfred_calls >= 1
-      health_package =  rand(3..8)
-      self.health += health_package
-      puts "alfred aumento #{health_package} unidades en HEALTH"
-    end
-    self.alfred_calls -=1
-  end
-  def fight_noob
-    noob_damage = rand(2..7)
-    self.health -= noob_damage
-    puts "pow\nla vida se redujo #{noob_damage} unidades"
-  end
 	def show_stats
 		system("clear")
 		puts("+--------------Batman's Stats-----------+")
 		puts("+--------------Health:#{@health} points---------+")
 		puts("+--------------Position:#{@position}---------------+")
-		puts("+--------------Alfred Calls:#{@alfred_calls}------+")
+	    puts("+--------------Alfred Calls:#{@alfred_calls}---------------+")
 	end
 	def load_stage
 		for i in 1..9 do
@@ -50,8 +38,6 @@ class Batman
 			fight_boss
 		end
 	end
-
-    
   def call_alfred
     if alfred_calls >= 1
       health_package =  rand(3..8)
@@ -61,13 +47,11 @@ class Batman
     end
     self.alfred_calls -=1
   end
-
   def fight_noob
     noob_damage = rand(2..7)
     self.health -= noob_damage
     self.show_stats
-    puts "pow\nla vida se redujo #{noob_damage} unidades"
-	  
+    puts "pow\nla vida se redujo #{noob_damage} unidades"	  
   end
   def fight_boss
   	guason_dmg = rand(5..25)
