@@ -1,19 +1,18 @@
 require_relative 'board.rb'
 
 class Action 
-
 	def initialize
 		@batman="|B|"
 		@blank = "|_|"
 		@boards = Board.new 
 		@position = []
+		@prev_position = []
 		@boards.board[1][0] = @batman
 	end
 
 	def move
 		for i in (0..10)
 			find_batman
-			previous = @position
 			puts "W -> UP \t S -> DOWN \t D -> RIGHT \t A -> LEFT"
 			case key_press
 			when "W"
@@ -30,7 +29,7 @@ class Action
 			if validate_move(@position)
 				puts "There is a wall Batman! You can't go throught it"
 			else 
-				set_move(previous)
+				set_move()
 				@boards.print_board
 			end
 		end
@@ -38,19 +37,19 @@ class Action
 
 	def validate_move(position)
 		is_wall = false
-		is_wall = true if @boards.board[position[0]][position[1]] != @blank
+		is_wall = true if @boards.board[position[0]][position[1]] != @blank or position[0] < 0 or position[1] < 0 
 	end
 
-	def set_move(previous)
-		puts previous
-		@boards.board[previous[0]][previous[1]] = @blank
+	def set_move()
+		@boards.board[@prev_position[0]][@prev_position[1]] = @blank 
 		@boards.board[@position[0]][@position[1]] = @batman
 	end
 
 	def find_batman
 		@boards.board.each_with_index do |elem,x|
 		 	elem.each_with_index do |elem2,y|
-		 		@position[0] = x and @position[1] = y if elem2.equal?(@batman) 
+		 		@position[0] = x and @position[1] = y if elem2.equal?(@batman)
+		 		@prev_position[0] = x and @prev_position[1] = y if elem2.equal?(@batman) 
 		 	end
 		end
 	end
