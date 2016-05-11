@@ -42,10 +42,12 @@ class Batman
     if alfred_calls >= 1
       health_package =  rand(3..8)
       self.health += health_package
+      self.alfred_calls -=1
       self.show_stats
       puts "alfred aumento #{health_package} unidades en HEALTH"
+    else 
+      puts "alfred te ha abandonado"
     end
-    self.alfred_calls -=1
   end
   def fight_noob
     noob_damage = rand(2..7)
